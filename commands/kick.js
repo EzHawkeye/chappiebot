@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
     message.reply("Weet je zeker dat je deze gebruiker wilt kicken?");
 
-    return reply.react('👍').then(() => message.react('👎'));
+    return message.reply.react('👍').then(() => message.react('👎'));
 
     const filter = (reaction, user) => {
         return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
