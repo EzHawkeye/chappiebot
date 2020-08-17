@@ -15,5 +15,6 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "online, Online"
+    name: "online"
+    name2: "Online"
 }
