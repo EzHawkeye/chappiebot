@@ -24,12 +24,6 @@ message.awaitReactions((reaction, user) => user.id == message.author.id && (reac
             message.reply('No reaction after 30 seconds, operation canceled');
     });
 
-break;
-}  
-}
-});
-
-
 }
 
 module.exports.help = {
