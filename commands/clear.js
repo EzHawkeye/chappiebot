@@ -25,7 +25,7 @@ if (Number.isInteger(parseInt(args[0]))) {
         
         } else {
         
-            message.channel.reply({embed: {
+            message.reply({embed: {
                 color: 15158332,
                 description: "(`Jesus, ik heb ${args[0]} berichten verwijderd.`)".then(msg => msg.delete({timeout: 4000}))
               }});
