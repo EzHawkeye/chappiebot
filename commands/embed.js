@@ -17,7 +17,7 @@ module.exports.run = async (bot, message, args) => {
             { name: 'Inline field title', value: 'Some value here', inline: true },
             { name: 'Inline field title', value: 'Some value here', inline: true },
         )
-        .addField(`\n**Status**`, `• **Status:** ${status}\n• **Activity:** ${member.user.presence.game ? `🎮 `: "Not Playing Anything"}`)
+        .addField(`\n**Status**`, `• **Status:** \n• **Activity:** ${member.user.presence.game ? `🎮 `: "Not Playing Anything"}`)
         .setImage('https://i.imgur.com/wSTFkRM.png')
         .setTimestamp()
         .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
