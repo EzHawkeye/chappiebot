@@ -2,27 +2,34 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    message.reply("Weet je zeker dat je deze gebruiker wilt kicken?");
 
-    return message.reply.react('👍').then(() => message.react('👎'));
+    message.reply('The bot will now shut down.\n'
+    + 'Confirm with a thumb up or deny with a thumb down.');
 
-    const filter = (reaction, user) => {
-        return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
-    };
-    
-    message.awaitReactions(filter, { max: 1, time: 60000, errors: ['time'] })
-        .then(collected => {
-            const reaction = collected.first();
-    
-            if (reaction.emoji.name === '👍') {
-                message.channel.reply('Grapjee, xxx we love you');
-            } else {
-                message.channel.reply('Ik stop zo die kanker duim in je moeders kut !');
+// Reacts so the user only have to click the emojis
+message.react('👍').then(r => {
+    message.react('👎');
+});
+
+// First argument is a filter function
+message.awaitReactions((reaction, user) => user.id == message.author.id && (reaction.emoji.name == '👍' || reaction.emoji.name == '👎'),
+    { max: 1, time: 30000 }).then(collected => {
+            if (collected.first().emoji.name == '👍') {
+                    message.reply('Shutting down...');
+                    client.destroy();
             }
-        })
-        .catch(collected => {
-            message.reply('Waarom heb je niet gereageerd kanker sukkel?');
-        });
+            else
+                    message.reply('Operation canceled.');
+    }).catch(() => {
+            message.reply('No reaction after 30 seconds, operation canceled');
+    });
+
+break;
+}  
+}
+});
+
+
 }
 
 module.exports.help = {
