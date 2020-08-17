@@ -2,7 +2,7 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
-    return message.channel.send("Weet je zeker dat je deze gebruiker wilt kicken?");
+    message.reply("Weet je zeker dat je deze gebruiker wilt kicken?");
 
     message.react('👍').then(() => message.react('👎'));
 
