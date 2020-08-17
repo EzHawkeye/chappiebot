@@ -2,6 +2,8 @@ const discord = require("discord.js");
 
 module.exports.run = async (bot, message, args) => {
 
+    return message.channel.send("Weet je zeker dat je deze gebruiker wilt kicken?");
+
     message.react('👍').then(() => message.react('👎'));
 
     const filter = (reaction, user) => {
@@ -13,13 +15,13 @@ module.exports.run = async (bot, message, args) => {
             const reaction = collected.first();
     
             if (reaction.emoji.name === '👍') {
-                message.reply('you reacted with a thumbs up.');
+                message.reply('Grapjee, xxx we love you');
             } else {
-                message.reply('you reacted with a thumbs down.');
+                message.reply('Ik stop zo die kanker duim in je moeders kut !');
             }
         })
         .catch(collected => {
-            message.reply('you reacted with neither a thumbs up, nor a thumbs down.');
+            message.reply('Waarom heb je niet gereageerd kanker sukkel?');
         });
 }
 
