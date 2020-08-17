@@ -4,7 +4,7 @@ module.exports.run = async (bot, message, args) => {
 
     message.reply("Weet je zeker dat je deze gebruiker wilt kicken?");
 
-    message.react('👍').then(() => message.react('👎'));
+    return message.react('👍').then(() => message.react('👎'));
 
     const filter = (reaction, user) => {
         return ['👍', '👎'].includes(reaction.emoji.name) && user.id === message.author.id;
@@ -15,9 +15,9 @@ module.exports.run = async (bot, message, args) => {
             const reaction = collected.first();
     
             if (reaction.emoji.name === '👍') {
-                message.reply('Grapjee, xxx we love you');
+                message.channel.send('Grapjee, xxx we love you');
             } else {
-                message.reply('Ik stop zo die kanker duim in je moeders kut !');
+                message.channel.send('Ik stop zo die kanker duim in je moeders kut !');
             }
         })
         .catch(collected => {
