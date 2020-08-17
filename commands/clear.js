@@ -25,12 +25,7 @@ if (Number.isInteger(parseInt(args[0]))) {
         
         } else {
         
-            message.reply({embed: {
-                color: 15158332,
-                description: "(`Jesus, ik heb ${args[0]} berichten verwijderd.`)".then(msg => msg.delete({timeout: 4000}))
-              }});
-
-           // message.reply(`Jesus, ik heb ${args[0]} berichten verwijderd.`).then(msg => msg.delete({timeout: 4000}));
+            message.reply(`Jesus, ik heb ${args[0]} berichten verwijderd.`).then(msg => msg.delete({timeout: 4000}));
         
         }
 

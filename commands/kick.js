@@ -7,8 +7,8 @@ module.exports.run = async (bot, message, args) => {
     + 'Confirm with a thumb up or deny with a thumb down.');
 
 // Reacts so the user only have to click the emojis
-message.react('👍').then(r => {
-    message.react('👎');
+    return message.react('👍').then(r => {
+    return message.react('👎');
 });
 
 // First argument is a filter function
