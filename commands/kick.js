@@ -3,8 +3,8 @@ const discord = require("discord.js");
 module.exports.run = async (bot, message, args) => {
 
 
-
-    message.channel.send(":apple:***SONDAGE :apple:\n "+choix1+" ou "+""+choix2+"***")
+a
+   return message.channel.send("Weet je zeker dat je de gebruiker wilt kicken?")
     .then(function (message) {
 message.react("👍")
   message.react("👎")
