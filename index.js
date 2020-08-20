@@ -20,7 +20,7 @@ fs.readdir("./commands/", (err, files) => {
     jsFiles.forEach((f, i) => {
 
         var fileGet = require(`./commands/${f}`);
-        console.log(`De file ${f} is geladen`);
+        console.log(`De kanker file ${f} is geladen`);
 
         bot.commands.set(fileGet.help.name, fileGet);
 
