@@ -2,7 +2,7 @@ const Discord = require("discord.js");
 const botConfig = require("./botconfig.json");
 
 const SUGGESTION_CHANNEL = '721679910229377024'
-const token = 'NzExOTc0Mzg0MDM4MDUxODgx.XsKz0A.2X60_cdm9wlj_3NRbbsjWvveGwk'
+
 Discord.RichEmbed = Discord.MessageEmbed;
 
 
@@ -88,4 +88,4 @@ bot.on("message", async message => {
 
 
 
-bot.login(token)
+bot.login(process.env.token);
