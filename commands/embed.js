@@ -1,31 +1,28 @@
 const discord = require("discord.js");
 
+const SUGGESTION_CHANNEL = 721679910229377024;
+
 module.exports.run = async (bot, message, args) => {
 
-
-    // inside a command, event listener, etc.
-    const exampleEmbed = new discord.MessageEmbed()
-        .setColor('#0099ff')
-        .setTitle('Some title')
-        .setURL('https://discord.js.org/')
-        .setAuthor(`Info For ${message.author.username}`)
-        .setDescription(`• Hallo, degene die deze command heeft ingetypt is kanker gay,\n•**ID:** ${message.author.id}\n• **Nickname:** ${message.author.nickname !== null ? `Nickname: ${message.author.nickname}` : "None"}\n• **Bot?:** ${bot}`)
-        .setThumbnail(message.author.displayAvatarURL())
-        .addFields(
-            { name: 'Regular field title', value: 'Some value here' },
-            { name: '\u200B', value: '\u200B' },
-            { name: 'Inline field title', value: 'Some value here', inline: true },
-            { name: 'Inline field title', value: 'Some value here', inline: true },
-        )
-        .addField(`\n**Status**`, `• **Status:** \n• **Activity:** ${member.user.presence.game ? `🎮 `: "Not Playing Anything"}`)
-        .setImage('https://i.imgur.com/wSTFkRM.png')
-        .setTimestamp()
-        .setFooter('Some footer text here', 'https://i.imgur.com/wSTFkRM.png');
-    
-    message.channel.send(exampleEmbed);
-
+    if (message.channel.id === SUGGESTION_CHANNEL) {
+        let embed = new Discord.RichEmbed()
+        .setAuthor(message.member.nickname ? message.member.nickname : message.author.tag,message.author.displayAvatarURL)
+        .setColor(0x2894C2)
+        .setTitle('Suggestie')
+        .setDescription(message.content)
+        .setTimestamp(new Date());
+        message.channel.send(embed).then((message) => {
+          const sent = message;
+          sent.react('👍').then(() => {
+            sent.react('👎').then(() => {
+              log(LOG_LEVELS.SPAM,'Completed suggestion message');
+            }).catch(console.error);
+          }).catch(console.error);
+        }).catch(console.error);
+        return message.delete();
+    }
 }
 
 module.exports.help = {
-    name: "embed"
+    name: "mc"
 }

@@ -1,10 +1,15 @@
-const discord = require("discord.js");
+const Discord = require("discord.js");
 const botConfig = require("./botconfig.json");
+
+const SUGGESTION_CHANNEL = '721679910229377024'
+const token = 'NzExOTc0Mzg0MDM4MDUxODgx.XsKz0A.2X60_cdm9wlj_3NRbbsjWvveGwk'
+Discord.RichEmbed = Discord.MessageEmbed;
+
 
 const fs = require("fs");
 
-const bot = new discord.Client();
-bot.commands = new discord.Collection();
+const bot = new Discord.Client();
+bot.commands = new Discord.Collection();
 
 fs.readdir("./commands/", (err, files) => {
 
@@ -61,8 +66,26 @@ bot.on("message", async message => {
 
     if(commands) commands.run(bot,message, arguments);
 
+    if (message.channel.id === SUGGESTION_CHANNEL) {
+        let embed = new Discord.RichEmbed()
+        .setAuthor(message.member.nickname ? message.member.nickname : message.author.tag,message.author.displayAvatarURL)
+        .setColor(0x2894C2)
+        .setTitle('Suggestie')
+        .setDescription(message.content)
+        .setTimestamp(new Date());
+        message.channel.send(embed).then((message) => {
+          const sent = message;
+          sent.react('👍').then(() => {
+            sent.react('👎').then(() => {
+              log(LOG_LEVELS.SPAM,'Completed suggestion message');
+            }).catch(console.error);
+          }).catch(console.error);
+        }).catch(console.error);
+        return message.delete();
+      }
+
 }); 
 
 
 
-bot.login(process.env.token);
+bot.login(token)
