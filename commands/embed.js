@@ -1,6 +1,6 @@
 const discord = require("discord.js");
 
-const SUGGESTION_CHANNEL = 721679910229377024;
+const SUGGESTION_CHANNEL = 738838962260672572;
 
 module.exports.run = async (bot, message, args) => {
 
@@ -13,8 +13,8 @@ module.exports.run = async (bot, message, args) => {
         .setTimestamp(new Date());
         message.channel.send(embed).then((message) => {
           const sent = message;
-          sent.react('👍').then(() => {
-            sent.react('👎').then(() => {
+          sent.react('✅').then(() => {
+            sent.react('❌').then(() => {
               log(LOG_LEVELS.SPAM,'Completed suggestion message');
             }).catch(console.error);
           }).catch(console.error);
@@ -24,5 +24,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-    name: "mc"
+    name: ""
 }

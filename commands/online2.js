@@ -7,7 +7,7 @@ module.exports.run = async (bot, message, args) => {
         // We now have a collection with all online member objects in the totalOnline variable
         message.channel.send({embed: {
             color: 15105570,
-            description: `Er zijn momenteel **${totalOnline.size}** members online in Chappie's Clubhuis!`
+            description: `Er zijn momenteel **${totalOnline.size}** members online in Herocity !`
           }});
     });
 
